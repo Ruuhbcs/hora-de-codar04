@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de codar 04</title>
+</head>
+<body>
+    <!-- Crie uma array de planetas que inclua "Terra", "Marte", "Plutão", "Vênus", "Júpiter", "Saturno"  e, em seguida, peça ao usuário para digitar o nome de um planeta. Verifique se o planeta que o usuário informou está na array e informe ao usuário.-->
+
+    <p>Digite o nome de um planeta: </p>
+    <input type="text" id="input-planeta">
+    <button id="button-verificar">Verificar</button>
+    <p id="resultado"></p>
+
+    <script>
+        const planetas = ["Terra", "Marte", "Plutão", "Vênus", "Júpiter", "Saturno"];
+        const planetaInput = document.getElementById("input-planeta");
+        const buttonVerificar = document.getElementById("button-verificar");
+        const resultado = document.getElementById("resultado");
+
+buttonVerificar.addEventListener("click", () => {
+    const planetaDigitado = planetaInput.value.trim();
+
+    if (planetas.includes(planetaDigitado)) {
+        resultado.textContent = `${planetaDigitado} está na lista de planetas.`;
+    } else {
+        resultado.textContent = `${planetaDigitado} não está na lista de planetas.`;
+    }
+});
+    </script>
+
+</body>
+</html>

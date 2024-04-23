@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de codar 04</title>
+</head>
+<body>
+    <!-- Crie um programa onde o usuário possa cadastrar estudantes sem limites, e, em seguida, Se o usuário digitar "PARE" o programa deve exibir a quantidade de estudantes cadastrados e a lista com cada um deles.  -->
+    
+<form id="cadastro-estudantes">
+    <label for="nome-estudante">Nome do estudante: </label>
+    <input type="text" id="nome-estudante"/>
+    <button type="submit">Cadastrar</button>
+    <p id="mensagem"></p>
+</form>
+
+<ul id="lista-estudantes"></ul>
+
+<script>
+    let estudantes = [];
+
+    const form= document.getElementById("cadastro-estudantes");
+    const mensagem= document.getElementById("mensagem");
+    const listaEstudantes= document.getElementById("lista-estudantes");
+
+    form.addEventListener("submit", (e) => {
+       e.preventDefault();
+       
+    const nomeEstudante= document.getElementById("nome-estudante").value;
+
+    if (nomeEstudante.toUpperCase() === "PARE") {
+        mensagem.textContent= 'Você cadastrou ' + estudantes.length +'estudantes.';
+        listaEstudantes.innerHTML= "";
+        estudantes.forEach((estudante)=> {
+            const li = document.createElement("li");
+            li.textContent= estudante;
+            listaEstudantes.appendChild(li);
+        });
+    } else {
+        estudantes.push(nomeEstudante);
+        mensagem.textContent= 'Você cadastrou ' + estudantes.length +' estudantes.';
+        document.getElementById("nome-estudante").value = "";
+    }
+    });
+</script>
+
+</body>
+</html>
