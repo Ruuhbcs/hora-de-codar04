@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora de codar 04</title>
+</head>
+<body>
+    <!-- Vamos criar uma lista de compras. 
+Crie uma array de frutas, exiba-a ao usuário e, em seguida, peça ao usuário para digitar o nome de uma das frutas.
+Caso a fruta esteja no array, remova-a e exiba a mensagem "Fruta foi retirada da lista". 
+Peça novamente para o usuário digitar o nome de uma fruta para ser removida. 
+Sempre que o usuário procurar por uma fruta que não está no array exiba a mensagem "Fruta indisponível no nosso mercado". 
+Quando o array não possuir mais itens dentro de si, escreva "Lista de compras finalizada".-->
+
+<p id="lista-frutas"></p>
+<input id="input-fruta" type="text" placeholder="Digite o nome de uma fruta">
+<button id="remover-fruta">Remover Fruta</button>
+<p id="mensagem"></p>
+
+<script>
+    let frutas = ['Maçã', 'Banana', 'Mamão', 'Pera', 'Uva'];
+
+    document.getElementById('lista-frutas').innerHTML = 'Lista de frutas: ' + frutas.join(', ');
+    document.getElementById('remover-fruta').addEventListener('click', removerFruta);
+
+    function removerFruta() {
+        let frutaDigitada = document.getElementById('input-fruta').value;
+        frutaDigitada = frutaDigitada.toLowerCase();
+
+        if (frutas.includes(frutaDigitada)) {
+            let indice = frutas.indexOf(frutaDigitada);
+            frutas.splice(indice, 1);
+            document.getElementById('mensagem').innerHTML = 'Fruta foi retirada da lista';
+            document.getElementById('lista-frutas').innerHTML = 'Lista de frutas: ' + frutas.join(', ');
+
+            if (frutas.length === 0) {
+                document.getElementById('mensagem').innerHTML = 'Lista de compras finalizada';
+            }
+        } else {
+            document.getElementById('mensagem').innerHTML = 'Fruta indisponível no nosso mercado';
+        }
+        document.getElementById('input-fruta').value = '';
+    }
+</script>
+
+</body>
+</html>
